@@ -1,0 +1,68 @@
+{
+    "name": "modelOutput",
+    "fields": {
+        "origin_date": {
+            "type": "date", 
+            "required": true,
+            "format": "%Y-%m-%d",
+            "required_values": [
+                "2023-01-01",
+                "2023-02-01"                
+            ],
+            "must_include_all": true,
+            "optional_values": [
+                "2023-03-01"
+            ]        
+        },
+        "target": {
+            "type": "str",
+            "required": true,
+            "required_values": [
+            "cases"
+            ]
+        }, 
+        "output_type": {
+            "type": "str",
+            "required": true,
+            "conditional_fields": {
+                "mean": {
+                    "output_type_id": {
+                        "type": "str",
+                        "required": true,
+                        "required_values": [
+                            "NA" 
+                        ] 
+                    },
+                    "value": {
+                        "type": "float",
+                        "required": true,
+                        "nullable": false,
+                        "min": 0.0
+                    },
+                    "value_required": true
+                },
+                "quantile": {
+                    "output_type_id": {
+                        "type": "str",
+                        "required": true,
+                        "required_values": [
+                            "0.025",
+                            "0.975"          
+                        ]
+                    },
+                    "value": {
+                        "type": "float",
+                        "required": true,
+                        "nullable": false,
+                        "min": 0.0
+                    },
+                    "value_required": false
+                }
+            }        
+        }
+    },
+    "completeness": {
+      "fields": ["origin_date", "target", "output_type", "output_type_id"],
+      "unique": true
+    }
+}

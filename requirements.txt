@@ -1,0 +1,2 @@
+pytest
+git+https://x-access-token:${GH_TOKEN}@github.com/PeterFransson/hubAdmin.git@6f5c41882b90d966a8d3a8cb096221b430743465
